@@ -1,18 +1,32 @@
-function doWork() {
-    var canvas = document.getElementById("myBonfireLitCanvas");
-    var context = canvas.getContext("2d");
+let memeText = "FOLHA DE PONTO PREENCHIDA";
+let optimusPrinceps = new FontFace('Optimus Princeps', 'url(font/OptimusPrinceps.ttf)');
 
-    var myImg = new Image();
+function setUpApp() {
+    let canvas = document.getElementById("myBonfireLitCanvas");
+    let context = canvas.getContext("2d");
+
+    let myImg = new Image();
     myImg.onload = function () {
         context.drawImage(myImg, 0, 0, 1270, 720);
-        context.font = "72px OptimusPrinceps";
+        context.font = '72px "Optimus Princeps"';
         context.fillStyle = "#f8c35b";
         context.textAlign = "center";
-        context.fillText("FOLHA DE PONTO PREENCHIDA", canvas.width / 2, (canvas.height / 2) + 20);
+        context.fillText(memeText, canvas.width / 2, (canvas.height / 2) + 25);
     };
     myImg.src = 'img/bonfire_lit.jpg';
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    doWork();
+    optimusPrinceps.load().then(function (loadedFont) {
+        document.fonts.add(loadedFont);
+        setUpApp();
+    });
+
+    const btnUpdate = document.getElementById("btnUpdate");
+    const txtText = document.getElementById("txtText");
+
+    btnUpdate.onclick = function () {
+        memeText = txtText.value;
+        setUpApp();
+    };
 });
