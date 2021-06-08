@@ -7,7 +7,7 @@ function setUpApp() {
 
     let myImg = new Image();
     myImg.onload = function () {
-        context.drawImage(myImg, 0, 0, 1270, 720);
+        context.drawImage(myImg, 0, 0, 1280, 720);
         context.font = '72px "Optimus Princeps"';
         context.fillStyle = "#f8c35b";
         context.textAlign = "center";
