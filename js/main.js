@@ -22,11 +22,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
         setUpApp();
     });
 
+    const btnDownload = document.getElementById("btnDownload");
     const btnUpdate = document.getElementById("btnUpdate");
     const txtText = document.getElementById("txtText");
 
     btnUpdate.onclick = function () {
         memeText = txtText.value;
         setUpApp();
+    };
+
+    btnDownload.onclick = function () {
+        const link = document.createElement('a');
+        link.download = "bonfire_lit.jpg";
+        link.href = document.getElementById("myBonfireLitCanvas").toDataURL();
+        link.click();
     };
 });
